@@ -1,0 +1,71 @@
+<!doctype html>
+{% load account %}
+{% load socialaccount %}
+{% load static %}
+
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Bootstrap CSS -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+
+    <title>Logout</title>
+  </head>
+  <body>
+
+                <div class="text-blueGray-700 transition duration-500 ease-in-out transform bg-white border rounded-lg ">
+              <div class="flex flex-col flex-wrap p-2 mx-auto md:items-center md:flex-row">
+                <nav class="flex flex-wrap items-center justify-start text-base ">
+                  <ul class="items-center inline-block list-none lg:inline-flex">
+                    <li>
+                      <a href="#" class="px-4 py-1 mr-1 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black ">Contact Us</a>
+                    </li>
+                    <li>
+                      <a href="#" class="px-4 py-1 mr-1 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black ">Menus</a>
+                    </li>
+                  </ul>
+                </nav>
+                <a href="/" class="justify-center focus:outline-none md:ml-auto md:mr-auto">
+                  <div class="inline-flex items-center">
+                    <div class="w-2 h-2 p-2 mr-2 rounded-full bg-gradient-to-tr from-blue-500 to-blue-600">
+                    </div>
+                    <h2 class="block p-2 text-xl font-medium text-black transition duration-500 ease-in-out transform hover:text-blueGray-500 lg:text-x lg:mr-8"> DineOut </h2>
+                  </div>
+                </a>
+                <p>Come Back Soon! &nbsp;</p>
+                </div>
+            </div>
+    
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1>Sign Out </h1>
+    <p class="lead" > Hello {% user_display user %}, Are you sure you want to sign out?</p>
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+      </div>
+
+    <form method="post" action="{% url 'account_logout' %}">
+      {% csrf_token %}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+      {% endif %}
+      <p class="lead"> <button id = "logout" class = "btn btn btn-outline-info my-4" type="submit">Sign Out</button></p>
+      </form>
+
+    </div>
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

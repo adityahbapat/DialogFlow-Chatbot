@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!-- load staticfiles removed in django3.0 -->
+{% load static %}
+<!-- python manage.py runserver_plus --cert-file cert.pem --key-file key.pem -->
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <title>DineOut</title>
+  </head>
+  <body>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "{your-app-id}",
+          cookie: true,
+          xfbml: true,
+          version: "{api-version}",
+        });
+
+        FB.AppEvents.logPageView();
+      };
+
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+    </script>
+    {% if user.is_authenticated %}
+    <div
+      class="text-blueGray-700 transition duration-500 ease-in-out transform bg-white border rounded-lg"
+    >
+      <div
+        class="flex flex-col flex-wrap p-2 mx-auto md:items-center md:flex-row"
+      >
+        <nav class="flex flex-wrap items-center justify-start text-base">
+          <ul class="items-center inline-block list-none lg:inline-flex">
+            <li>
+              <a
+                href="#"
+                class="px-4 py-1 mr-1 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black"
+                >Menus</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a
+          href="/"
+          class="justify-center focus:outline-none md:ml-auto md:mr-auto"
+        >
+          <div class="inline-flex items-center">
+            <div
+              class="w-2 h-2 p-2 mr-2 rounded-full bg-gradient-to-tr from-blue-500 to-blue-600"
+            ></div>
+            <h2
+              class="block p-2 text-xl font-medium text-black transition duration-500 ease-in-out transform hover:text-blueGray-500 lg:text-x lg:mr-auto"
+            >
+              DineOut
+            </h2>
+          </div>
+        </a>
+        <a id="signout" class="btn btn-primary" href="/accounts/logout"
+          >Log Out</a
+        >
+      </div>
+    </div>
+    <!-- <a href="/accounts/login"><h1>Hey, Please Log in.</h1></a>  -->
+    <p class="text-center my-2">Welcome, {{ user.username }}!</p>
+    <hr />
+    <div class="col text-center my-2">DineOut</div>
+
+    {% else %}
+
+    <div
+      class="text-blueGray-700 transition duration-500 ease-in-out transform bg-white border rounded-lg"
+    >
+      <div
+        class="flex flex-col flex-wrap p-2 mx-auto md:items-center md:flex-row"
+      >
+        <nav class="flex flex-wrap items-center justify-start text-base">
+          <ul class="items-center inline-block list-none lg:inline-flex">
+            <li>
+              <a
+                href="/reservations"
+                class="px-4 py-1 mr-1 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black"
+                >Reservations</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="px-4 py-1 mr-1 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black"
+                >Menu</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="px-4 py-1 mr-1 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black"
+                >About Us</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a
+          href="/"
+          class="justify-center focus:outline-none md:ml-auto md:mr-auto"
+        >
+          <div class="inline-flex items-center">
+            <div
+              class="w-2 h-2 p-2 mr-2 rounded-full bg-gradient-to-tr from-blue-500 to-blue-600"
+            ></div>
+            <h2
+              class="block p-2 text-xl font-medium text-black transition duration-500 ease-in-out transform hover:text-blueGray-500 lg:text-x lg:mr-8"
+            >
+              DineOut
+            </h2>
+          </div>
+        </a>
+        <a
+          id="signin"
+          href="/accounts/login"
+          class="w-auto px-8 py-2 my-2 text-base font-medium text-white transition duration-500 ease-in-out transform bg-blue-600 border-blue-600 rounded-md lg:ml-auto focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:b-gblue-700"
+          >Sign in
+        </a>
+      </div>
+    </div>
+<!-- 
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+      intent="WELCOME"
+      chat-title="DineOut-ChatBot"
+      agent-id="5e6c15bf-80de-4a86-a4a0-54528407e2ad"
+      language-code="en"
+    ></df-messenger>
+    -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger
+      intent="WELCOME"
+      chat-title="DineOut-Assistant"
+      agent-id="6782f26b-af8b-42f5-9882-44ff57b58b7e"
+      language-code="en"
+    ></df-messenger>
+    <img class="img-fluid"
+    src="https://wallpaperbat.com/img/41969-clean-chinese-restaurant-opened-by-white-couple-and-criticized.jpg"
+    alt="Food at DineOut" />
+
+    <!-- <a href="/accounts/login"><h1>Hey, Please Log in.</h1></a>  -->
+    {% endif %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

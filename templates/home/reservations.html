@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>Reservations | DineOut</title>
+  </head>
+  <body>
+    <div
+      class="text-blueGray-700 transition duration-500 ease-in-out transform bg-white border rounded-lg"
+    >
+      <div
+        class="flex flex-col flex-wrap p-2 mx-auto md:items-center md:flex-row"
+      >
+        <nav class="flex flex-wrap items-center justify-start text-base">
+          <ul class="items-center inline-block list-none lg:inline-flex">
+            <li>
+              <a
+                href="/reservations"
+                class="px-4 py-1 mr-1 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black"
+                >Reservations</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="px-4 py-1 mr-1 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black"
+                >Menu</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="px-4 py-1 mr-1 text-base text-blueGray-500 transition duration-500 ease-in-out transform rounded-md focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:text-black"
+                >About Us</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <a
+          href="/"
+          class="justify-center focus:outline-none md:ml-auto md:mr-auto"
+        >
+          <div class="inline-flex items-center">
+            <div
+              class="w-2 h-2 p-2 mr-2 rounded-full bg-gradient-to-tr from-blue-500 to-blue-600"
+            ></div>
+            <h2
+              class="block p-2 text-xl font-medium text-black transition duration-500 ease-in-out transform hover:text-blueGray-500 lg:text-x lg:mr-8"
+            >
+              DineOut
+            </h2>
+          </div>
+        </a>
+        <a
+          id="signin"
+          href="/accounts/login"
+          class="w-auto px-8 py-2 my-2 text-base font-medium text-white transition duration-500 ease-in-out transform bg-blue-600 border-blue-600 rounded-md lg:ml-auto focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:b-gblue-700"
+          >Sign in
+        </a>
+      </div>
+    </div>
+    <div class="container-fluid mx-auto my-4 py-3">
+      {% for table in tables %}
+          <div class="card" class="mx-3 my-3 py-2 px-3"style="width: 24rem; display: inline-flex">
+            <div class="card-body">
+              <h5 class="card-title">Table No: {{table.id}}</h5>
+              {% if table.booked %}
+              <p class="card-text">Reserved for {{table.name.name}}</p>
+
+              <div class="btn btn-danger">Booked</div>
+              {% else %}
+              <p class="card-text">Reserved for - </p>
+
+              <div class="btn btn-success">Vacant</div>
+              {% endif %}
+            </div>
+          </div>
+     
+      {% endfor %}
+    </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
